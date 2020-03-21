@@ -20,6 +20,11 @@ try {
   if(pr.body){
    console.log(pr.body)
   }
+  octokit.pulls.get({
+    owner:'Prateek93a',repo:'hello-world-javascript-action',pull_number: pr.number
+  }).then(p=>{
+    console.info(p.data.title)
+  })
 } catch (error) {
   core.setFailed(error.message);
 }
