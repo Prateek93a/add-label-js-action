@@ -2,6 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const token = process.env.Github;
 if(!token){
+  console.log("no token")
   return;
 }
 try {
