@@ -60,7 +60,12 @@ try {
         });
       }else{
       octokit.issues.createComment({owner:'Prateek93a',repo:'hello-world-javascript-action',issue_number: pr.number,body:'Hi there! Your Title does not match my standards'}).then(()=>{
-       // do something
+        octokit.pulls.update({
+          owner,
+          repo,
+          pull_number: p.data.number,
+          state:'closed'
+        });
       })
       }
     }
