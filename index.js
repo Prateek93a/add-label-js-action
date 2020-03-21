@@ -16,6 +16,8 @@ try {
   // console.log(`The event payload: ${payload}`);
   const octokit = new github.GitHub(token);
   const pr = github.context.payload['pull_request'];
+  const owner = 'Prateek93a';
+  const repo = 'hello-world-javascript-action';
   if(!pr) return
   if(pr.body){
    console.log(pr.body)
@@ -25,9 +27,42 @@ try {
   }).then(p=>{
     console.info(p.data.title)
     if(p.data.title){
+      if(p.data.title.toLowerCase().includes('feature')){
+        octokit.issues.addLabels({
+          owner,
+          repo,
+          issue_number: p.data.number,
+          labels:['feature']
+        });
+
+      }else if(p.data.title.toLowerCase().includes('improvement')){
+        octokit.issues.addLabels({
+          owner,
+          repo,
+          issue_number: p.data.number,
+          labels:['improvement']
+        });
+
+      }else if(p.data.title.toLowerCase().includes('fix')){
+        octokit.issues.addLabels({
+          owner,
+          repo,
+          issue_number: p.data.number,
+          labels:['fix']
+        });
+
+      }else if(p.data.title.toLowerCase().includes('chore')){
+        octokit.issues.addLabels({
+          owner,
+          repo,
+          issue_number: p.data.number,
+          labels:['chore']
+        });
+      }else{
       octokit.issues.createComment({owner:'Prateek93a',repo:'hello-world-javascript-action',issue_number: pr.number,body:'Hi there! Your Title does not match my standards'}).then(()=>{
        // do something
       })
+      }
     }
   })
 } catch (error) {
