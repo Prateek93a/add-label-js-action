@@ -24,6 +24,11 @@ try {
     owner:'Prateek93a',repo:'hello-world-javascript-action',pull_number: pr.number
   }).then(p=>{
     console.info(p.data.title)
+    if(!p.data.title){
+      octokit.issues.createComment({owner:'Prateek93a',repo:'hello-world-javascript-action',issue_number: pr.number,body:'Hi there! You did not add any Title to your pr hence I am closing it'}).then(()=>{
+       // do something
+      })
+    }
   })
 } catch (error) {
   core.setFailed(error.message);
