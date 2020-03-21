@@ -1,4 +1,4 @@
-# Hello world It's JS
+# Hello world It's JS world
 
 This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
 
