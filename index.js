@@ -27,6 +27,7 @@ try {
   }).then(p=>{
     console.info(p.data.title)
     if(p.data.title){
+      console.log(p.data.body);
       if(p.data.title.toLowerCase().includes('feature')){
         octokit.issues.addLabels({
           owner,
