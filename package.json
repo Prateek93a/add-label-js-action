@@ -19,6 +19,6 @@
   "homepage": "https://github.com/Prateek93a/hello-world-javascript-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.3",
-    "@actions/github": "^2.1.1"
+    "@actions/github": "^6.0.0"
   }
 }
